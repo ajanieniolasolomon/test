@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+      <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  
+    <script type="text/javascript" src="js/style.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <link rel="stylesheet" type="text/scss" href="css/ionicons.css">
+      <link rel="stylesheet" type="text/scss" href="css/ionicons.min.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+   
+    <script type="text/javascript" src="js/geturi.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var id = decodeURI(getUrlVars()["id"]);
+        var title = decodeURI(getUrlVars()["title"]);
+        var duration = decodeURI(getUrlVars()["duration"]);
+        var from = decodeURI(getUrlVars()["from"]);
+        var memo=decodeURI(getUrlVars()["memo"]);
+       document.getElementById('title').innerHTML=title;
+        document.getElementById('duration').innerHTML=duration;
+         document.getElementById('memo').innerHTML=memo;
+     document.getElementById('from').innerHTML=from;
+      document.getElementById('id').innerHTML=id;
+        $("#update").click(function() {
+            var id = $("#id").val();
+            var title = $("#title").val();
+            var duration = $("#duration").val();
+            var price = $("#price").val();
+            var dataString = "id=" + id + "&title=" + title + "&duration=" + duration + "&price=" + price + "&update=";
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/run-chat/update.php",
+                data: dataString,
+                crossDomain: true,
+                cache: false,
+                beforeSend: function() {
+                    $("#update").val('Connecting...');
+                },
+                success: function(data) {
+                    if (data == "success") {
+                        alert("Updated");
+                        $("#update").val("Update");
+                    } else if (data == "error") {
+                        alert("error");
+                    }
+                }
+            });
+
+        });
+        $("#delete").click(function() {
+            var id = $("#id").val();
+            var dataString = "id=" + id + "&delete=";
+            $.ajax({
+                type: "GET",
+                url: "http://localhost/Rohan/CURD/delete.php",
+                data: dataString,
+                crossDomain: true,
+                cache: false,
+                beforeSend: function() {
+                    $("#delete").val('Connecting...');
+                },
+                success: function(data) {
+                    if (data == "success") {
+                        alert("Deleted");
+                        $("#delete").val("Delete");
+                    } else if (data == "error") {
+                        alert("error");
+                    }
+                }
+            });
+
+        });
+    });
+    </script>
+</head>
+
+<body style='background:  white'>
+    <div class="bar bar-header bar-calm" style="margin-bottom:80px;">
+        
+    
+       
+    </div>
+    <br/>
+    <br/>
+    <div id="me">
+    <div class="list card">
+ <div class="item item-image" style="height:100px;width: 50px">
+    <img src="ion.jpeg">
+  
+    </div>
+  <div class="item item-body">
+   
+    <p>TITLE: <strong><span id='title'></span></strong></p>
+     <p>DATE: <strong><span id='duration'></span></strong></p>
+   <p>REF_NO: <strong>NIMASA_HQ/2017/V1/3#<span id='id'></span></strong></p>
+  </div>
+
+  <div class="item item-body">
+    
+    <p id='memo'>
+      
+    </p>
+    <p>from: <strong><span id='from'>from: </span></strong></p>
+  </div>
+
+</div>
+   
+    <script>
+
+</script>
+    <a href="javascript:pdfromHTML()">generate pdf</a>
+     <script type="text/javascript" src="js/FileSaver.js"></script>
+    <script type="text/javascript" src="js/jspdf.js"></script>
+    <script type="text/javascript" src="js/jspdf.min.js"></script>
+    <script type="text/javascript" src="js/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="js/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="js/jspdf.plugin.from_html.js"></script>
+  
+     <script type="text/javascript" src="js/pdfFromHTML.js"></script>
+     <div id="testcase">
+ 
+
+ 
+</div>
+    </div>
+</body>
+
+</html>

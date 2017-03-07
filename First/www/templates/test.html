@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/geturi.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var username='ajani';
+    
+            
+            var url = "http://localhost/run-chat/fetch.php";
+        $.getJSON(url,{id:username},function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id = field.id;
+                var title = field.email;
+                var duration = field.password;
+                var price = field.username;
+                $("#listview").append("<a class='item' href='form.html?id=" + id + "&title=" + title + "&duration=" + duration + "&price=" + price + "'><span class='item-note'>$" + price + "</span><h2>" + title + " </h2><p>" + duration + "</p></a>");
+            });
+        });
+            
+        });
+    
+        
+        
+        
+        
+        
+    </script>
+</head>
+<body>
+    <div class="bar bar-header bar-balanced" style="margin-bottom:80px;">
+        
+    </div>
+    <br/>
+    <br/>
+   <ul class="list" id="listview">
+    </ul>
+</body>

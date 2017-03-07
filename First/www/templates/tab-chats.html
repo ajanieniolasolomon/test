@@ -1,0 +1,41 @@
+<!--
+philippians 4:13
+-->
+
+    
+    <script type="text/javascript">
+        
+     
+    
+         $(document).ready(function() {
+     setInterval(function(){
+        
+        $('#listvie').load('http://localhost/run-chat/mee.php?id='+localStorage.username);
+        
+        
+        },300);
+    });
+            
+      
+        
+        
+        
+        
+        
+    </script>
+    
+  
+    
+<ion-view>
+   
+  <ion-content class="padding">
+    
+       <ion-nav-title>me</ion-nav-title>
+     <br/>
+    <br/>
+    <div class="list">
+   <ul class="list" id="listvie">
+    </ul></div>
+   
+  </ion-content>
+</ion-view>

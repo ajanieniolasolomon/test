@@ -1,0 +1,308 @@
+
+
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var username=localStorage.username;
+    
+            
+            var url = "http://localhost/run-chat/fetch.php";
+        $.getJSON(url,{id:username},function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id = field.id;
+                var title = field.email;
+                var duration = field.password;
+                var price = field.username;
+                $("#listvie").append("<a class='item item-icon-right item-divider' href='form.html?id=" + id + "&title=" + title + "&duration=" + duration + "&price=" + price + "'><span class='item-note'>$" + price + "</span>" + title + "<p>" + duration + "</p><i class='icon ion-arrow-right'></i></a>");
+            });
+        });
+            
+        });
+    
+        
+        
+        
+        
+        
+    </script>
+    
+  
+<ion-view>
+  <ion-content class="padding">
+     <br/>
+    <br/>
+    <div class="list">
+   <ul class="list" id="listvie">
+    </ul></div>
+   ...
+  </ion-content>
+</ion-view>
+ <body ng-app="starter">
+    
+    hello
+  </body>
+  <!--
+philippians 4:13
+-->
+  <script type="text/javascript">
+        $(document).ready(function(){
+            var username=localStorage.username;
+             $("#send").click(function() {
+              var mess = $("#mess").val();
+              
+              
+              });
+    
+         $(document).ready(function() {
+     setInterval(function(){
+        
+        $('#message').load('http:///run-chat/chat.php?id='+username+'&mess='+mess);
+        
+        
+        },300);
+    });
+            
+        });
+  <ion-content class="padding">
+   <div class="messages">
+
+        <div class="message" >
+          <span id="message"></span>
+        </div>
+
+        
+
+   
+
+   
+    
+  </ion-pane>
+  </ion-content>
+<script type="text/javascript">
+        $(document).ready(function(){
+            var username=localStorage.username;
+            
+    var mess="hello";
+        
+     setInterval(function(){
+        
+        $('#message').load('http://localhost/run-chat/chat.php?id='+username+'&mess='+mess);
+        
+        
+        },300);
+
+            
+        });
+        
+</script>
+ <ion-view>
+  <ion-content class="padding">
+    
+
+
+    <br />
+<br />
+    <ul class="list" id="message">
+    </ul>
+  
+ <ion-footer-bar keyboard-attach class="bar-calm item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Type your message" id="mess" />
+      </label>
+      <button class="button button-clear" id="send">
+        Send
+      </button>
+    </ion-footer-bar>
+  </ion-content>
+ 
+</ion-view>
+<!--
+philippians 4:13
+-->
+<style>
+ 
+ .chatbox{
+  width:50px;
+  min-width: 390px;
+  height:600px;
+  background:white;
+  padding:2px;
+  margin:2px auto;
+  box-shadow: 0 3px #ccc;
+  margin-top: 2px auto;
+
+  
+ }
+ .chatlog{
+  padding:10px;
+  width:100%;
+  height:350px;
+  background: #eee;
+  overflow-x:hidden;
+  overflow-y: scroll;
+ }
+ .chatlogs::-moz-scrollbar{
+  width:2px;
+ }
+ .chatlogs::-scrollbar-thumb{
+  border-radius:2px;
+  background:rgba(0,0,0,.1);
+ }
+ .chat{
+  display:flex;
+  flex-flow:row wrap;
+  align-items:flex-start;
+  margin-bottom: 10px;
+  
+ }
+ .chat .user-photo{
+  width:60px;
+  height:60px;
+  background: #ccc;
+  border-radius: 50%;
+  overflow: hidden;
+  
+ }
+ .chat .user-photo img{ 
+  width:100%;
+  
+ }
+ .chat .chat-message{
+  width:70%;
+  padding:15px;
+  margin: 5px 10px 0;
+ 
+  border-radius:10px;
+  color:#fff;
+  font-size:18px;
+  
+ }
+ .friend .chat-message{
+   background: #1adda4;
+ }
+ .self .chat-message{
+   background: #1ddced;
+   order:-1;
+ }
+ .chat-form{
+  margin-top:10px;
+  display: flex;
+  align-items:flex-start;
+ }
+ .chat-form textarea{
+  background:#fbfbfb;
+  width:75%;
+  height: 50px;
+  border: 2px solid #eee;
+  resize: none;
+  padding: 10px;
+  font-size:18px;
+  border-radius: 3px;
+  color:#999;
+  
+ }
+ .chat-form textarea:focus{
+  background: #fff;
+ }
+ .chat-form button{
+  background: #1ddced;
+  padding:5px 15px;
+  font-size:30px;
+  color:#fff;
+  border:none;
+  margin: 0 10px;
+  border-radius:3px;
+  box-shadow:0 3px 0 #0eb2c1;
+ }
+ .chat-form button:hover{
+  background:#13c8d9;
+ }
+</style>
+<script>
+ function submitchat(){
+  var user=localStorage.username;
+  var msg=document.forms["form1"]["msg"].value;
+  if(msg===''){
+   alert('cant be empty');
+  }
+  else{
+   msg.readOnly=true;
+  var xmlhttp= new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function(){
+   if(xmlhttp.readyState==4&&xmlhttp.status==200){
+    document.getElementById('chat-message').innerHTML=xmlhttp.responseText;
+   }
+   
+  };
+  xmlhttp.open('GET','http://localhost/run-chat/chat.php?id='+user+'&msg='+msg,true);
+  xmlhttp.send();
+  }
+ }
+ $(document).ready(function(){
+  $.ajaxSetup({cache:false});
+  setInterval(function(){$('#chat-message').load('http://localhost/run-chat/log.php?id='+user);},200);
+ });
+ 
+</script>
+
+      
+ <ion-view>
+  <ion-content class="padding">
+    
+<br />
+<br />
+<br />
+<body>
+<div class="chatbox">
+ <div class="chatlog">
+  <div class="chat friend" id="chat-message">
+   
+  </div>
+   
+  
+ 
+  
+ </div>
+ <form name="form1" onsubmit="submitchat();" method="">
+ <div class="chat-form">
+  <textarea id='msg'name="msg"></textarea>
+  <button type="submit" value="submit">send</button>
+ </div>
+ </form>
+ 
+</div>
+
+ </body>
+ 
+</ion-view>
+<ion-view>
+  <ion-content class="padding">
+    
+
+
+    <br />
+<br />
+    <div class="chatlog">
+  <div class="chat friend" id="chat-message">
+   
+  </div>
+   
+  
+ 
+  
+ </div>
+  </ion-content>
+  <form name="form1" onsubmit="submitchat();" method="">
+ <ion-footer-bar keyboard-attach class="bar-calm item-input-inset">
+  
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Type your message" id="msg" name="msg" />
+      </label>
+      <button class="button button-clear" id="send" type="submit" value="submit">
+        Send
+      </button>
+    </ion-footer-bar></form>
+  </ion-content>
+ 
+</ion-view>

@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+      <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  
+    <script type="text/javascript" src="js/style.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <link rel="stylesheet" type="text/scss" href="css/ionicons.css">
+      <link rel="stylesheet" type="text/scss" href="css/ionicons.min.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+   
+    <script type="text/javascript" src="js/geturi.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        
+         $(document).ready(function() {
+     setInterval(function(){
+        
+        $('#payslip').load('http://localhost/run-chat/payslip.php?id='+localStorage.username);
+        
+        
+        },300);
+    });
+            
+      
+        
+    });
+    </script>
+</head>
+
+<body style='background:  white'>
+    <div class="bar bar-header bar-calm" style="margin-bottom:80px;">
+        <center><h4 style="text-align:center;color: white;"><strong>MONTHLY PAY-SLIP</strong></h4></center>
+    
+       
+    </div>
+    <br/>
+    <br/>
+    <div id="payslip">
+    <div class="list card">
+
+ 
+  
+  </div>
+
+</div>
+   
+   
+  
+</body>
+
+</html>
